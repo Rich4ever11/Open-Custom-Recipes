@@ -22,7 +22,7 @@ The following **required** functionality is completed:
 - [ ] **The app displays the total price of all features**
 - [x] **Users can view a list of all submitted `CustomItem`**
 - [ ] **Users can edit or delete a submitted `CustomItem` from the list view of submitted `CustomItem`**
-- [ ] **Users can update or delete `CustomItem` that have been created from the detail page**
+- [x] **Users can update or delete `CustomItem` that have been created from the detail page**
 
 The following **optional** features are implemented:
 
