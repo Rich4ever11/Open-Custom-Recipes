@@ -11,7 +11,7 @@ const App = () => {
   let element = useRoutes([
     {
       path: "/",
-      element: <CreateCustomItem title="BOLT BUCKET | Customize" />,
+      element: <CreateCustomItem title="Recipe And Go | Customize" />,
     },
     {
       path: "/customItems",

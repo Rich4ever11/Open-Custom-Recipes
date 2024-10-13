@@ -10,7 +10,7 @@ const ViewCustomItems = () => {
       title: "Spaghetti Carbonara",
       description:
         "A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.",
-      imgURL:
+      imgurl:
         "https://plus.unsplash.com/premium_photo-1691948106030-d5e76d461b14?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8U3BhZ2hldHRpJTIwQ2FyYm9uYXJhfGVufDB8fDB8fHww",
       preparationTime: 1200,
       servings: "4",
@@ -23,7 +23,7 @@ const ViewCustomItems = () => {
       title: "Chicken Tikka Masala",
       description:
         "A flavorful Indian dish made with marinated chicken in a spiced tomato sauce.",
-      imgURL:
+      imgurl:
         "https://plus.unsplash.com/premium_photo-1670191894591-bc501a33de0d?q=80&w=2576&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       preparationTime: 3600,
       servings: "4",
@@ -36,7 +36,7 @@ const ViewCustomItems = () => {
       title: "Vegetable Stir Fry",
       description:
         "A quick and healthy dish with mixed vegetables and soy sauce.",
-      imgURL:
+      imgurl:
         "https://images.unsplash.com/photo-1464500650248-1a4b45debb9f?q=80&w=2598&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 
       preparationTime: 900,
@@ -50,7 +50,7 @@ const ViewCustomItems = () => {
       title: "Chocolate Chip Cookies",
       description:
         "Delicious cookies filled with chocolate chips, perfect for any occasion.",
-      imgURL:
+      imgurl:
         "https://plus.unsplash.com/premium_photo-1672073871234-7f2de18b9e5d?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       preparationTime: 1800,
       servings: "12",
@@ -62,7 +62,7 @@ const ViewCustomItems = () => {
     {
       title: "Caesar Salad",
       description: "A fresh salad with romaine, croutons, and Caesar dressing.",
-      imgURL:
+      imgurl:
         "https://plus.unsplash.com/premium_photo-1700089483464-4f76cc3d360b?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       preparationTime: 600,
       servings: "2",
@@ -75,7 +75,7 @@ const ViewCustomItems = () => {
       title: "Beef Tacos",
       description:
         "Flavorful tacos filled with seasoned beef and topped with fresh ingredients.",
-      imgURL:
+      imgurl:
         "https://plus.unsplash.com/premium_photo-1661730314652-911662c0d86e?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 
       preparationTime: 1500,
@@ -89,7 +89,7 @@ const ViewCustomItems = () => {
       title: "Lemonade",
       description:
         "A refreshing drink made with fresh lemons, sugar, and water.",
-      imgURL:
+      imgurl:
         "https://images.unsplash.com/photo-1523677011781-c91d1bbe2f9e?q=80&w=2586&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 
       preparationTime: 600,
@@ -103,7 +103,7 @@ const ViewCustomItems = () => {
       title: "Pancakes",
       description:
         "Fluffy pancakes perfect for breakfast, served with syrup and berries.",
-      imgURL:
+      imgurl:
         "https://plus.unsplash.com/premium_photo-1663854478296-dd00b6257021?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 
       preparationTime: 1200,
@@ -116,7 +116,7 @@ const ViewCustomItems = () => {
     {
       title: "Minestrone Soup",
       description: "A hearty Italian soup filled with vegetables and pasta.",
-      imgURL:
+      imgurl:
         "https://plus.unsplash.com/premium_photo-1664391935474-f1e502d3ad61?q=80&w=2710&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       preparationTime: 2400,
       servings: "6",
@@ -129,7 +129,7 @@ const ViewCustomItems = () => {
       title: "Caprese Salad",
       description:
         "A simple Italian salad made with fresh mozzarella, tomatoes, and basil.",
-      imgURL:
+      imgurl:
         "https://plus.unsplash.com/premium_photo-1677619680535-c3d453823b9e?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       preparationTime: 600,
       servings: "2",
@@ -161,16 +161,19 @@ const ViewCustomItems = () => {
         </h1>
       </div>
       <div className="flex flex-row space-x-2 overflow-y-scroll p-2">
-        {customItemsDummyData.map((customItem) => (
-          <CustomItemCard
-            title={customItem.title}
-            imgURL={customItem.imgURL}
-            servings={customItem.servings}
-            description={customItem.description}
-            ingredients={customItem.ingredients}
-            instructions={customItem.instructions}
-          />
-        ))}
+        {customItems &&
+          customItems.map((customItem, index) => (
+            <CustomItemCard
+              key={index}
+              id={customItem.id}
+              title={customItem.title}
+              imgurl={customItem.imgurl}
+              servings={customItem.servings}
+              description={customItem.description}
+              ingredients={customItem.ingredients}
+              instructions={customItem.instructions}
+            />
+          ))}
       </div>
     </>
   );
