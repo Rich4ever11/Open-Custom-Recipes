@@ -15,7 +15,7 @@ The following **required** functionality is completed:
 - [x] **The web app is connected to a PostgreSQL database, with an appropriately structured `CustomItem` table**
   - [ ] **NOTE: Your GIF must include a view of your Railway database that shows the contents of the table used by your app**
 - [x] **The web app uses React to display data from the API**
-- [ ] **Users can view a list of options they can select for different aspects of a `CustomItem`**
+- [x] **Users can view a list of options they can select for different aspects of a `CustomItem`**
 - [ ] **On selecting each option, the displayed visual icon for the `CustomItem` updates to match the option the user chose**
 - [ ] **The user can submit their choices to save the car to the list of created `CustomItem`**
 - [ ] **If a user submits a feature combo that is impossible, they should receive an appropriate error message and the item should not be saved to the database**
