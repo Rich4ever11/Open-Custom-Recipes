@@ -31,7 +31,6 @@ export const customItems = [
       "A quick and healthy dish with mixed vegetables and soy sauce.",
     imgURL:
       "https://images.unsplash.com/photo-1464500650248-1a4b45debb9f?q=80&w=2598&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-
     preparationTime: 900,
     servings: "2",
     ingredients:

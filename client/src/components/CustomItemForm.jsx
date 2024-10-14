@@ -274,7 +274,7 @@ function CustomItemForm(props) {
                   </div>
                   <div className="flex justify-center">
                     <button
-                      className="bg-transparent max-w-48 hover:bg-blue-900 text-white font-thin hover:text-white py-2 px-4 border border-blue-50 hover:border-transparent rounded"
+                      className="p-2 items-center text-center text-white bg-slate-700 rounded-lg hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-slate-300 dark:bg-slate-600 dark:hover:bg-slate-700 dark:focus:ring-slate-800 bg-transparent max-w-48 text-xl font-thin hover:text-white  border border-blue-50 hover:border-transparent"
                       onClick={handleAddInstruction}
                     >
                       Add Instruction
@@ -310,7 +310,7 @@ function CustomItemForm(props) {
                   </div>
                   <div className="flex justify-center">
                     <button
-                      className="bg-transparent max-w-48 hover:bg-blue-900 text-white font-thin hover:text-white py-2 px-4 border border-blue-50 hover:border-transparent rounded"
+                      className="p-2 items-center text-center text-white bg-slate-700 rounded-lg hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-slate-300 dark:bg-slate-600 dark:hover:bg-slate-700 dark:focus:ring-slate-800 bg-transparent max-w-48 text-xl font-thin hover:text-white  border border-blue-50 hover:border-transparent"
                       onClick={handleAddIngredient}
                     >
                       Add Ingredient
@@ -320,13 +320,13 @@ function CustomItemForm(props) {
               </div>
             </div>
             <div className="flex justify-center">
-              <button className="bg-transparent max-w-48 text-2xl hover:bg-green-900 text-white font-thin hover:text-white py-4 px-4 border border-blue-50 hover:border-transparent rounded">
+              <button className="p-2 items-center text-center text-white bg-slate-700 rounded-lg hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-slate-300 dark:bg-slate-600 dark:hover:bg-slate-700 dark:focus:ring-slate-800 bg-transparent max-w-48 text-xl font-thin hover:text-white  border border-blue-50 hover:border-transparent">
                 {formType === 0 ? "Add Recipe" : "Update Recipe"}
               </button>
 
               {formType == 1 && (
                 <button
-                  className="ml-4 bg-transparent max-w-48 text-2xl hover:bg-red-900 text-white font-thin hover:text-white py-4 px-4 border border-blue-50 hover:border-transparent rounded"
+                  className="p-2 items-center text-center text-white bg-slate-700 rounded-lg hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-slate-300 dark:bg-slate-600 dark:hover:bg-slate-700 dark:focus:ring-slate-800 bg-transparent max-w-48 text-xl font-thin hover:text-white  border border-blue-50 hover:border-transparent"
                   onClick={handleRecipeDeletion}
                 >
                   Remove Recipe

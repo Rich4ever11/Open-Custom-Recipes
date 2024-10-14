@@ -53,5 +53,5 @@ const seedCustomItem = async () => {
   });
 };
 
-createCustomItem();
+// createCustomItem();
 seedCustomItem();
