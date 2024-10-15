@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { LuVegan } from "react-icons/lu";
 
 export default function CustomItemCard(props) {
   const {
     id,
     title,
+    vegan,
     imgurl,
     servings,
     description,
@@ -51,7 +53,10 @@ export default function CustomItemCard(props) {
           <h3 className="mb-2 text-4xl font-thin tracking-tight text-gray-900 dark:text-white">
             {title}
           </h3>
+          {vegan && <LuVegan className="m-1" size={32} />}
         </div>
+
+        <div></div>
 
         <div className="flex justify-center">
           <h4>{servings + " Servings"}</h4>
@@ -67,6 +72,8 @@ export default function CustomItemCard(props) {
           </div>
         </a>
         <div className="p-5">
+          <p className="py-2">Estimate Cost: {ingredients.length * 5}$</p>
+
           <div className="flex justify-center">
             <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
               {description}

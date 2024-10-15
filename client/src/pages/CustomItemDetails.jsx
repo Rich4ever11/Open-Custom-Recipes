@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import customItemAPI from "../services/customItemAPI";
 import { useNavigate } from "react-router-dom";
+import { LuVegan } from "react-icons/lu";
+
 import "../App.css";
 
 const CarDetails = () => {
@@ -19,14 +21,6 @@ const CarDetails = () => {
     };
     getCustomItem();
   }, []);
-  //   id={customItem.id}
-  //   title={customItem.title}
-  //   servings={customItem.servings}
-  //   imgurl={customItem.imgurl}
-  //   description={customItem.description}
-  //   preparationTime={customItem.preparationtime}
-  //   instructions={customItem.instructions}
-  //   ingredients={customItem.ingredients}
 
   const formatArray = (array) => {
     if (array.constructor === Array) {
@@ -77,9 +71,11 @@ const CarDetails = () => {
             <div className="flex flex-row">
               <div className="basis-1/2">
                 <div>
-                  <h1 className="font-white font-thin text-6xl py-2">
+                  <h1 className="flex font-white font-thin text-6xl py-2">
                     {customItem.title}
+                    {customItem.vegan && <LuVegan className="m-4" size={46} />}
                   </h1>
+
                   <p className="font-thin text-slate-100 text-xl py-2">
                     {"Serving Size: " + customItem.servings}
                   </p>
@@ -87,6 +83,10 @@ const CarDetails = () => {
                   <p className="font-thin text-slate-100 text-xl pb-2">
                     {"Preparation Time: " +
                       handleCountDownFunctionality(customItem.preparationtime)}
+                  </p>
+
+                  <p className="font-thin text-slate-100 text-xl pb-2">
+                    Estimate Cost: {customItem.ingredients.length * 5}$
                   </p>
                 </div>
 

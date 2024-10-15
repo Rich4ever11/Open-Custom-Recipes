@@ -167,6 +167,7 @@ const ViewCustomItems = () => {
               key={index}
               id={customItem.id}
               title={customItem.title}
+              vegan={customItem.vegan}
               imgurl={customItem.imgurl}
               servings={customItem.servings}
               description={customItem.description}
