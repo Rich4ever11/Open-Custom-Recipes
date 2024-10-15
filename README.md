@@ -40,6 +40,10 @@ Here's a walkthrough of implemented required features:
 
 ![short_gif](https://github.com/user-attachments/assets/b96f7419-a8fc-4f10-9417-871a60228eec)
 
+
+![ezgif-1-383acd3c7d](https://github.com/user-attachments/assets/fbc80e11-1d60-43dc-9fd2-d33d48c5e1d7)
+
+
 GIF created with ... GIF tool here
 
 ## Notes
