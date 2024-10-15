@@ -1,5 +1,48 @@
 import "../config/dotenv.js";
 import { pool } from "../config/database.js";
+import { veganCheckList } from "../data/veganCheckList.js";
+
+const verifyVeganRecipe = (title, description, ingredients, instructions) => {
+  // Check name
+  const recipeNameSplit = title.split();
+  const recipeNameIntersection = recipeNameSplit.filter((section) =>
+    veganCheckList.includes(section)
+  );
+
+  if (recipeNameIntersection.length) {
+    return false;
+  }
+
+  // check description
+  const recipeDescriptionSplit = description.split();
+  const recipeDescriptionIntersection = recipeDescriptionSplit.filter(
+    (section) => veganCheckList.includes(section)
+  );
+
+  if (recipeDescriptionIntersection.length) {
+    return false;
+  }
+
+  // check Recipe Instructions
+  const recipeInstructionIntersection = veganCheckList.filter((section) =>
+    instructions.includes(section)
+  );
+
+  if (recipeInstructionIntersection.length) {
+    return false;
+  }
+
+  // check Recipe Ingredients
+  const recipeIngredientsIntersection = veganCheckList.filter((section) =>
+    ingredients.includes(section)
+  );
+
+  if (recipeIngredientsIntersection.length) {
+    return false;
+  }
+
+  return true;
+};
 
 const getCustomItems = async (req, res) => {
   const getQuery = `
@@ -42,6 +85,7 @@ const addCustomItem = async (req, res) => {
     title,
     description,
     imgURL,
+    vegan,
     preparationTime,
     servings,
     ingredients,
@@ -49,12 +93,13 @@ const addCustomItem = async (req, res) => {
   } = req.body;
 
   const insertQuery = `
-      INSERT INTO customItem (title, description, imgurl, preparationTime, servings, ingredients, instructions) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *
+      INSERT INTO customItem (title, description, vegan, imgurl, preparationTime, servings, ingredients, instructions) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *
   `;
 
   const values = [
     title,
     description,
+    vegan,
     imgURL,
     preparationTime,
     servings,
@@ -63,6 +108,13 @@ const addCustomItem = async (req, res) => {
   ];
 
   try {
+    if (
+      verifyVeganRecipe(title, description, ingredients, instructions) ===
+        false &&
+      vegan == 1
+    ) {
+      throw "Invalid Vegan Recipe";
+    }
     const result = await pool.query(insertQuery, values);
     console.log("🎉 custom item data added");
     res.status(200).json({ data: result.rows });
@@ -79,18 +131,20 @@ const updateCustomItem = async (req, res) => {
     imgURL,
     preparationTime,
     servings,
+    vegan,
     ingredients,
     instructions,
   } = req.body;
   const customItemId = req.params.id;
 
   const updateQuery = `
-  UPDATE customItem SET title = $1, description = $2, imgurl = $3, preparationTime = $4, servings = $5, ingredients = $6, instructions = $7 WHERE id = $8;
+  UPDATE customItem SET title = $1, description = $2, vegan = $3, imgurl = $4, preparationTime = $5, servings = $6, ingredients = $7, instructions = $8 WHERE id = $9;
   `;
 
   const values = [
     title,
     description,
+    vegan,
     imgURL,
     preparationTime,
     servings,
@@ -100,6 +154,13 @@ const updateCustomItem = async (req, res) => {
   ];
 
   try {
+    if (
+      verifyVeganRecipe(title, description, ingredients, instructions) ===
+        false &&
+      vegan == 1
+    ) {
+      throw "Invalid Vegan Recipe";
+    }
     const result = await pool.query(updateQuery, values);
     console.log("🎉 custom item data added");
     res.status(200).json({ data: result.rows });

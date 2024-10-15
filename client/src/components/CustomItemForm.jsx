@@ -1,13 +1,13 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { veganCheckList } from "../data/veganCheckList";
+import { LuVegan } from "react-icons/lu";
 import PropTypes from "prop-types";
 import customItemAPI from "../services/customItemAPI";
 
 function CustomItemForm(props) {
   const navigate = useNavigate();
-
   const {
     id,
     title,
@@ -17,19 +17,9 @@ function CustomItemForm(props) {
     preparationTime,
     instructions,
     ingredients,
+    vegan,
     formType,
   } = props;
-
-  console.log(
-    id,
-    title,
-    servings,
-    description,
-    preparationTime,
-    instructions,
-    ingredients,
-    formType
-  );
 
   const [recipeImageURL, setRecipeImageURL] = useState(
     imgurl ||
@@ -47,6 +37,7 @@ function CustomItemForm(props) {
   const [recipeIngredients, setRecipeIngredients] = useState(
     ingredients || [""]
   );
+  const [recipeVegan, setRecipeVegan] = useState(vegan || 0);
 
   const handleAddInstruction = (event) => {
     event.preventDefault();
@@ -74,12 +65,57 @@ function CustomItemForm(props) {
     return "{" + arrayValue.join(",") + "}";
   };
 
+  const verifyVeganRecipe = () => {
+    // Check name
+    const recipeNameSplit = recipeTitle.split();
+    const recipeNameIntersection = recipeNameSplit.filter((section) =>
+      veganCheckList.includes(section)
+    );
+
+    if (recipeNameIntersection.length) {
+      return false;
+    }
+
+    // check description
+    const recipeDescriptionSplit = recipeTitle.split();
+    const recipeDescriptionIntersection = recipeDescriptionSplit.filter(
+      (section) => veganCheckList.includes(section)
+    );
+
+    if (recipeDescriptionIntersection.length) {
+      return false;
+    }
+
+    // check Recipe Instructions
+    const instructionStringList = convertListToString(recipeIngredients);
+    const recipeInstructionIntersection = veganCheckList.filter((section) =>
+      instructionStringList.includes(section)
+    );
+
+    if (recipeInstructionIntersection.length) {
+      return false;
+    }
+
+    // check Recipe Ingredients
+    const ingredientsStringList = convertListToString(recipeIngredients);
+    const recipeIngredientsIntersection = veganCheckList.filter((section) =>
+      ingredientsStringList.includes(section)
+    );
+
+    if (recipeIngredientsIntersection.length) {
+      return false;
+    }
+
+    return true;
+  };
+
   const handleCreateItem = async (event) => {
     event.preventDefault();
     const customItemData = {
       title: recipeTitle,
       description: recipeDescription,
       imgURL: recipeImageURL,
+      vegan: recipeVegan,
       preparationTime: recipePreparationTime,
       servings: recipeServings,
       ingredients: convertListToString(recipeIngredients),
@@ -101,6 +137,12 @@ function CustomItemForm(props) {
     navigate("/customItems");
   };
 
+  const handleRecipeTypeChange = (event) => {
+    const value = event.target.value;
+    setRecipeVegan(value);
+    verifyVeganRecipe();
+  };
+
   const handleRecipeDeletion = async (event) => {
     event.preventDefault();
     if (id) {
@@ -117,9 +159,15 @@ function CustomItemForm(props) {
       >
         <div className="space-y-12">
           <div className="border-b border-gray-900/10 pb-12">
-            <h2 className="font-semibold leading-7 text-white text-3xl">
-              {formType === 0 ? "Create Recipe" : `Edit Recipe - ${title}`}
-            </h2>
+            <div className="flex">
+              <h2 className="font-semibold leading-7 text-white text-3xl">
+                {formType === 0 ? "Create Recipe" : `Edit Recipe - ${title}`}
+              </h2>
+              {verifyVeganRecipe() === false && recipeVegan == 1 && (
+                <LuVegan className="ml-2" color={"green"} size={36} />
+              )}
+            </div>
+
             <p className="mt-1 text-lg leading-6 text-slate-50 py-2">
               Please feel free to share your favorite recipes from your family
               classics to simple dishes. This website is your oyster
@@ -320,17 +368,44 @@ function CustomItemForm(props) {
               </div>
             </div>
             <div className="flex justify-center">
-              <button className="p-2 items-center text-center text-white bg-slate-700 rounded-lg hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-slate-300 dark:bg-slate-600 dark:hover:bg-slate-700 dark:focus:ring-slate-800 bg-transparent max-w-48 text-xl font-thin hover:text-white  border border-blue-50 hover:border-transparent">
+              <div class="max-w-sm mx-auto py-4">
+                <label
+                  for="countries"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Vegan?
+                </label>
+                <select
+                  id="countries"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  onChange={handleRecipeTypeChange}
+                  value={recipeVegan}
+                >
+                  <option value={1}>Yes</option>
+                  <option value={0}>No</option>
+                </select>
+              </div>
+            </div>
+            <div className="flex justify-center">
+              <button
+                className="m-2 p-2 items-center text-center text-white bg-slate-700 rounded-lg hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-slate-300 dark:bg-slate-600 dark:hover:bg-slate-700 dark:focus:ring-slate-800 bg-transparent max-w-48 text-xl font-thin hover:text-white  border border-blue-50 hover:border-transparent"
+                disabled={verifyVeganRecipe() === false && recipeVegan == 1}
+              >
                 {formType === 0 ? "Add Recipe" : "Update Recipe"}
               </button>
 
               {formType == 1 && (
                 <button
-                  className="p-2 items-center text-center text-white bg-slate-700 rounded-lg hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-slate-300 dark:bg-slate-600 dark:hover:bg-slate-700 dark:focus:ring-slate-800 bg-transparent max-w-48 text-xl font-thin hover:text-white  border border-blue-50 hover:border-transparent"
+                  className="m-2 p-2 items-center text-center text-white bg-slate-700 rounded-lg hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-slate-300 dark:bg-slate-600 dark:hover:bg-slate-700 dark:focus:ring-slate-800 bg-transparent max-w-48 text-xl font-thin hover:text-white  border border-blue-50 hover:border-transparent"
                   onClick={handleRecipeDeletion}
                 >
                   Remove Recipe
                 </button>
+              )}
+            </div>
+            <div className="flex justify-center">
+              {verifyVeganRecipe() === false && recipeVegan == 1 && (
+                <p>{"Recipe is not vegan :("}</p>
               )}
             </div>
           </div>

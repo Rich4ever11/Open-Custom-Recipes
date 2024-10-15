@@ -12,7 +12,8 @@ export const createCustomItem = async () => {
         description VARCHAR(255) NOT NULL,
         imgURL VARCHAR(255) NOT NULL,
         preparationTime NUMERIC(100, 2) NOT NULL,
-        servings VARCHAR(255) NOT NULL,  
+        servings VARCHAR(255) NOT NULL, 
+        vegan BOOLEAN NOT NULL, 
         ingredients text[] NOT NULL,
         instructions text[] NOT NULL
 )
@@ -29,7 +30,7 @@ export const createCustomItem = async () => {
 const seedCustomItem = async () => {
   customItems.forEach((item) => {
     const insertQuery = {
-      text: "INSERT INTO customItem (title, description, imgURL, preparationTime, servings, ingredients, instructions) VALUES ($1, $2, $3, $4, $5, $6, $7)",
+      text: "INSERT INTO customItem (title, description, imgURL, preparationTime, servings, vegan, ingredients, instructions) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)",
     };
 
     const values = [
@@ -38,6 +39,7 @@ const seedCustomItem = async () => {
       item.imgURL,
       item.preparationTime,
       item.servings,
+      item.vegan,
       item.ingredients,
       item.instructions,
     ];
