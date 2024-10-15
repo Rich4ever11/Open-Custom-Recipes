@@ -18,15 +18,15 @@ The following **required** functionality is completed:
 - [x] **Users can view a list of options they can select for different aspects of a `CustomItem`**
 - [x] **On selecting each option, the displayed visual icon for the `CustomItem` updates to match the option the user chose**
 - [x] **The user can submit their choices to save the car to the list of created `CustomItem`**
-- [ ] **If a user submits a feature combo that is impossible, they should receive an appropriate error message and the item should not be saved to the database**
-- [ ] **The app displays the total price of all features**
+- [x] **If a user submits a feature combo that is impossible, they should receive an appropriate error message and the item should not be saved to the database**
+- [x] **The app displays the total price of all features**
 - [x] **Users can view a list of all submitted `CustomItem`**
 - [x] **Users can edit or delete a submitted `CustomItem` from the list view of submitted `CustomItem`**
 - [x] **Users can update or delete `CustomItem` that have been created from the detail page**
 
 The following **optional** features are implemented:
 
-- [ ] Selecting particular options prevents incompatible options from being selected even before form submission
+- [x] Selecting particular options prevents incompatible options from being selected even before form submission
 
 The following **additional** features are implemented:
 
