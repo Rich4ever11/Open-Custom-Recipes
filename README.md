@@ -36,10 +36,9 @@ The following **additional** features are implemented:
 
 Video Link - https://drive.google.com/file/d/1OPQrqMYdtyLGkMQlVaruT6CH2wAeSpdG/view?usp=sharing
 
-
-<img width="1280" alt="recipePics" src="https://github.com/user-attachments/assets/822cae4f-7dff-48ba-ae31-97cb96a13e5e">
-
 Here's a walkthrough of implemented required features:
+
+![short_gif](https://github.com/user-attachments/assets/b96f7419-a8fc-4f10-9417-871a60228eec)
 
 GIF created with ... GIF tool here
 
