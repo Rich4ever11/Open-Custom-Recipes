@@ -4,7 +4,7 @@ Submitted by: Richard Aja
 
 About this web app: Simple web app enabling users to create edit and remove their favorite recipes using React, Tailwind CSS, Express and Postgres 🥗
 
-Time spent: hours
+Time spent: 6 hours
 
 ## Required Features
 
